@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter Mini Project</title>
+</head>
+<style>
+    body{
+        background-color: #333;
+    }
+    .counter-box {
+        background-color: white;
+        border: 1px solid #333;
+        border-radius: 10px;
+        width: 500px;
+        margin: 100px auto;
+        padding: 20px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        transition: 0.5s;
+    }
+    .counter-box:hover{
+        box-shadow: 0 4px 8px rgba(255, 254, 254, 0.551);
+        
+    }
+    .counter{
+        width: 100%;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+    button {
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        margin: 0 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        transition: 0.5s;
+    }
+
+button:hover {
+    background: #0056b3; 
+}
+
+</style>
+<body>
+    <div class="counter-box">
+        <div class="counter">0</div>
+        <button class="decrement">Decrement -</button>
+        <button class="increment">Increment +</button>
+        <button class="reset">reset</button>
+    </div>    
+</body>
+
+<script>
+    const CounterDisplay = document.querySelector(".counter")
+    const IncrementBtn = document.querySelector(".increment")
+    const DecrementBtn = document.querySelector(".decrement")
+    const Reset = document.querySelector(".reset")
+    let count = 0;
+
+    IncrementBtn.addEventListener("click",function (){
+        count++;
+        CounterDisplay.innerText = count
+    })
+
+    DecrementBtn.addEventListener("click",function(){
+        if(count>0){
+          count--;
+          CounterDisplay.innerText = count
+        }
+    })
+
+    Reset.addEventListener("click",function(){
+        count = 0;
+        CounterDisplay.innerText = count
+    })
+</script>
+</html>
