@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Uplode Box</title>
+  </head>
+  <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .main-box{
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(41, 37, 37, 0.325); 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .box{
+        width: 450px;
+        height: 550px;
+        background-color: whitesmoke;
+        border-radius: 10px;
+        border: 1px solid black;
+        text-align: center;
+        transition: 0.8s;
+    }
+    .box:hover{
+        box-shadow: 0 20px 20px rgba(0, 0, 0, 0.612);
+    }
+    .image-heading{
+        width: 100%;
+        padding: 40px 0;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        text-align: center;
+    }
+
+    .image-box{
+       width: 250px; 
+       height: 250px;
+       margin: 20px auto;
+       border: 3px dashed lightseagreen;
+       border-radius: 10px;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+    }
+    p{
+        color: grey;
+        font-size: 16px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .uplode-btn{
+        background-color: green;
+        color: white;
+        padding: 12px 22px;
+        border-radius: 20px; 
+        border: none;
+        font-weight: bold;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    #file-input{
+        display: none;
+    }
+    #image{
+        height: 240px;
+        width: 240px;
+        display: none;
+    }
+  </style>
+  <body>
+    <div class="main-box">
+      <div class="box">
+        <div class="image-heading">
+            <h2>📸 Photo Upload</h2>
+        </div>
+        <div class="image-box">
+            <img id="image" src="" alt="">
+            <p>No Image Selected</p>
+        </div>
+        <input type="file" id="file-input" accept="image/*">
+        <br><br>
+        <button class="uplode-btn">Select Photo</button>
+      </div>
+    </div>
+  </body>
+  <script>
+     const UplodeBtn = document.querySelector(".uplode-btn")
+     const FileInput = document.querySelector("#file-input")
+     const imageShow = document.querySelector("#image")
+     const imageBox = document.querySelector(".image-box")
+     const p = document.querySelector("p")
+
+     UplodeBtn.addEventListener("click",function(){
+        FileInput.click();
+     })
+
+     FileInput.addEventListener("change",function(e){
+        const file = e.target.files[0]
+       
+        console.log(file)
+        if(file){
+            const reader = new FileReader();
+            reader.onload = function(e){
+                imageShow.src = e.target.result;
+                imageShow.style.display = "block"
+                imageBox.style.border = "3px solid lightseagreen" 
+                p.style.display = "none"
+            }
+            reader.readAsDataURL(file)
+        }
+     })
+  </script>
+</html>
